@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.amazonaws.services.simpleworkflow.flow.core.TryCatch;
 import com.herison.api.domain.Categoria;
 import com.herison.api.repositories.CategoriaRepository;
-
+import com.herison.api.services.exeptions.DataIntegrityExeption;
 import com.herison.api.services.exeptions.ObjectNotFoundException;
 
 
@@ -36,11 +36,19 @@ public class CategoriaService {
 		List<Categoria> obj = repo.findAll();
 		return obj;
 	}
-	public Categoria deleteById(Integer id) {
-		Optional<Categoria> obj = repo.findById(id);
+	public void delete(Integer id) {
+		repo.findById(id);
+		try {
 			repo.deleteById(id);
-			return obj.orElseThrow(()-> new ObjectNotFoundException(
-					"Objeto não encontrado! id:"+id+", Tipo"+ Categoria.class.getName()));
-			
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityExeption("Não é possivel excluir uma categoria que tenha produtos");
+		}
+				
 	}
+	public Categoria update (Categoria obj) {
+		find(obj.getId());
+		return repo.save(obj);
+				
+	}
+	
 }
