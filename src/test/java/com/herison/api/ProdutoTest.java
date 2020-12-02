@@ -1,9 +1,6 @@
 package com.herison.api;
 
-
-
-
-	import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +12,8 @@ import com.herison.api.builder.ProdutoBuilder;
 import com.herison.api.domain.Categoria;
 import com.herison.api.domain.Produto;
 
-	class ApiApplicationTests {
-
-	// void contextLoads() {
-	// }
-
+public class ProdutoTest {
+	
 	@Test
 	public void testarCategoriaProduto(){
 	CategoriaBuilder categoriaBuilder = CategoriaBuilder.umaCategoria();
@@ -28,20 +22,20 @@ import com.herison.api.domain.Produto;
 
 
 	ProdutoBuilder produtoBuilder = ProdutoBuilder.umProduto();
-	Produto p1 = produtoBuilder.comNome("Jeans").build();
-	Produto p2 = produtoBuilder.comNome("Geladeira").build();
+	Produto p1 = produtoBuilder.comNome("Jeans").comPreco(100.00).build();
+	Produto p2 = produtoBuilder.comNome("Geladeira").comPreco(200.0).build();
 
 
-	cat1.getProdutos().addAll(Arrays.asList(p1));
-	cat2.getProdutos().addAll(Arrays.asList(p2));
+	cat1.setProdutos(Arrays.asList(p1));
+	cat2.setProdutos(Arrays.asList(p2));
 
-	p1.getCategorias().addAll(Arrays.asList(cat1));
-	p2.getCategorias().addAll(Arrays.asList(cat2));
+	p1.setCategorias(Arrays.asList(cat1));
+	p2.setCategorias(Arrays.asList(cat2));
 
 	String saidaEsperada = "Jeans";
 	String saidaAtual = null;
 
-	saidaAtual = cat1.getProdutos().get(1).getNome();
+	saidaAtual = cat1.getProdutos().get(0).getNome();
 
 	assertEquals(saidaEsperada, saidaAtual);
 
@@ -55,22 +49,22 @@ import com.herison.api.domain.Produto;
 
 
 	ProdutoBuilder produtoBuilder = ProdutoBuilder.umProduto();
-	Produto p1 = produtoBuilder.comNome("Jeans").build();
-	Produto p2 = produtoBuilder.comNome("Geladeira").build();
+	Produto p1 = produtoBuilder.comNome("Jeans").comPreco(100.00).build();
+	Produto p2 = produtoBuilder.comNome("Geladeira").comPreco(200.0).build();
 
 
-	cat1.getProdutos().addAll(Arrays.asList(p1));
-	cat2.getProdutos().addAll(Arrays.asList(p2));
+	cat1.setProdutos(Arrays.asList(p1));
+	cat2.setProdutos(Arrays.asList(p2));
 
-	p1.getCategorias().addAll(Arrays.asList(cat1));
-	p2.getCategorias().addAll(Arrays.asList(cat2));
+	p1.setCategorias(Arrays.asList(cat1));
+	p2.setCategorias(Arrays.asList(cat2));
 
-	List<Produto> saidaEsperada = cat1.getProdutos();
-	List<Produto> saidaAtual = null;
+	String saidaEsperada = "Eletrodomestico";
+	String saidaAtual = null;
 
-	saidaAtual = cat2.getProdutos();
+	saidaAtual = p2.getCategorias().get(0).getNome();
 
 	assertEquals(saidaEsperada, saidaAtual);
 	}
 
-}
+		}
