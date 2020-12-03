@@ -33,12 +33,12 @@ public class CategoriaMock {
 		 ProdutoBuilder produtoBuilder = ProdutoBuilder.umProduto();
 		 
 		 List<Produto> listProd1=new ArrayList<>();
-		 Produto p = produtoBuilder.comNome("Perifericos").comPreco(20.0).comID(null).build();
+		 Produto p = produtoBuilder.comNome("Perifericos").comPreco(0.0).comID(null).build();
 	
 		 service = Mockito.mock(ProdutoService.class);
 	Mockito.when(service.findAll()).thenReturn(Arrays.asList(p));
 	
-	Double saidaEsperada = 2.0;
+	Double saidaEsperada = 0.0;
 	Double saidaAtual = service.TotalCategoria();
 	
 	
