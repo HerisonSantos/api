@@ -19,13 +19,13 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<junit.version>4.12</junit.version>
-		<mockito-junit.version>1.8.4</mockito-junit.version>
+		<mockito-junit.version>3.3.3</mockito-junit.version>
 	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
+			<artifactId>mockito-junit-jupiter</artifactId>
 			<version>${mockito-junit.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -35,7 +35,10 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

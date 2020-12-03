@@ -12,10 +12,13 @@ import com.herison.api.builder.CategoriaBuilder;
 import com.herison.api.builder.ProdutoBuilder;
 import com.herison.api.domain.Categoria;
 import com.herison.api.domain.Produto;
+import com.herison.api.services.ProdutoService;
 
 public class ProdutoTest {
+
+	 ProdutoService service = new ProdutoService();
 	
-	@Test
+	 @Test
 	public void testarCategoriaProduto(){
 	CategoriaBuilder categoriaBuilder = CategoriaBuilder.umaCategoria();
 	Categoria cat1 = categoriaBuilder.comNome("Moda").build();
@@ -27,16 +30,16 @@ public class ProdutoTest {
 	Produto p2 = produtoBuilder.comNome("Geladeira").comPreco(200.0).build();
 
 
-	cat1.setProdutos(Arrays.asList(p1));
-	cat2.setProdutos(Arrays.asList(p2));
+	cat1.setProdutos(Arrays.asList(p1,p2));
+	
 
 	p1.setCategorias(Arrays.asList(cat1));
-	p2.setCategorias(Arrays.asList(cat2));
+	p2.setCategorias(Arrays.asList(cat1));
 
-	String saidaEsperada = "Jeans";
-	String saidaAtual = null;
+	Double saidaEsperada = 20.0;
+	Double saidaAtual = null;
 
-	saidaAtual = cat1.getProdutos().get(0).getNome();
+	saidaAtual = service.TotalCategoria(cat1.getProdutos());
 
 	assertEquals(saidaEsperada, saidaAtual);
 
