@@ -26,6 +26,8 @@ public class ProdutoService {
 				"Objeto não encontrado! id:"+id+", Tipo"+ Produto.class.getName()));
 		
 	}
+
+	
 	public Produto insert(Produto obj) {
 		obj.setId(null);
 		return repo.save(obj);
