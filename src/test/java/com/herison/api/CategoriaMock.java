@@ -41,6 +41,9 @@ public class CategoriaMock {
 	Double saidaEsperada = 2.0;
 	Double saidaAtual = service.TotalCategoria();
 	
+	
+	
+	
 	assertEquals(saidaEsperada, saidaAtual);
 
 	}
