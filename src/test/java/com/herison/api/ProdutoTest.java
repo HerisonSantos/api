@@ -27,17 +27,18 @@ public class ProdutoTest {
 
 	ProdutoBuilder produtoBuilder = ProdutoBuilder.umProduto();
 	Produto p2 = produtoBuilder.comNome("Geladeira").comPreco(0.0).build();
-
-
-	cat1.setProdutos(Arrays.asList(p2));
+	Produto p1 = produtoBuilder.comNome("Jeans").comPreco(100.00).build();
 	
+	cat1.setProdutos(Arrays.asList(p1));
+	cat2.setProdutos(Arrays.asList(p2));
 
-	p2.setCategorias(Arrays.asList(cat1));
+	p1.setCategorias(Arrays.asList(cat1));
+	p2.setCategorias(Arrays.asList(cat2));
 
-	Double saidaEsperada = 20.0;
-	Double saidaAtual = null;
+	String saidaEsperada = "Jeans";
+	String saidaAtual = null;
 
-	saidaAtual = service.TotalCategoria();
+	saidaAtual = cat1.getProdutos().get(0).getNome();
 
 	assertEquals(saidaEsperada, saidaAtual);
 
