@@ -26,7 +26,8 @@ public class ProdutoService {
 				"Objeto não encontrado! id:"+id+", Tipo"+ Produto.class.getName()));
 		
 	}
-	public Double TotalCategoria(List<Produto> produtos) {
+	public Double TotalCategoria() {
+		List<Produto> produtos = findAll();
 		Double total =0.0;
 		for (Produto prod :produtos ) {
 			total= prod.getPreco();
